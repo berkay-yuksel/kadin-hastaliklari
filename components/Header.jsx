@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Header = () => {
   return (
     <>
-KADIN HASTALIKLARI
+<Link href="/"><span>KADIN HASTALIKLARI</span></Link>
 <hr/>
     </>
   )

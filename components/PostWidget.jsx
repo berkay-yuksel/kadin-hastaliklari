@@ -1,3 +1,4 @@
+/*
 import { useState,useEffect } from "react"
 import { getRecentPosts,getSimilarPosts } from "../services"
 
@@ -27,10 +28,13 @@ const PostWidget = ({categories,slug}) => {
 <div key={post.title}>
 <img   key={post.title} src={post.featuredImage.url} width="420px"  />  
 </div>
-))} */}
+))} 
 
     </div>
   )
 }
 
 export default PostWidget
+
+
+*/

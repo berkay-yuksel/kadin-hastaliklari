@@ -6,7 +6,7 @@ const graphqlAPI=process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 export const getPosts = async()=>{
 
     const query=gql`
-    query MyQuery {
+    query GetPosts {
         postsConnection(orderBy:createdAt_DESC
           last:3 
             ){
@@ -14,7 +14,6 @@ export const getPosts = async()=>{
             node{
               author {
                 name
-                slug
               }
               isFeaturedOne
               createdAt
@@ -26,10 +25,6 @@ export const getPosts = async()=>{
               }
               featuredImage {
                 url
-              }
-              categories {
-                name
-                slug
               }
             }
           }
@@ -44,6 +39,61 @@ export const getPosts = async()=>{
 
     return result.postsConnection.edges;
 }
+
+export const getPostDetails = async(slug)=>{
+
+  const query=gql`
+  query GetPostDetails($slug:String!) {
+      post(
+        where: {slug:$slug} 
+          ){
+            author {
+              name
+              slug
+              photo{
+                url
+              }
+            }
+            isFeaturedOne
+            createdAt
+            title
+            excerpt
+            slug
+            tags{
+              name
+              slug
+            }
+            featuredImage {
+              url
+            }
+            categories {
+              name
+              slug
+            }
+            content{
+              raw
+            }
+      }
+    }
+    
+  `
+
+
+//burada categories de gereksiz olabilir gereksizse sil
+  const result= await request(graphqlAPI,query,{slug});
+
+  return result.post;
+}
+
+
+
+
+
+
+
+
+
+
 /* 
  
 //rECENT pOSTS
