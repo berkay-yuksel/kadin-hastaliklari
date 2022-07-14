@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import {PostCard,Categories,Header} from "../components/"
+import { useState } from 'react'
+import {PostCard,FeaturedOne,Categories,Header} from "../components/"
 import { getPosts } from '../services'
-
 
 
 
@@ -23,6 +23,12 @@ export default function Home({posts}) {
       {/* <PostWidget/>
       <Categories/> */}
     </div>
+    {/* we need to fix this later fromm server */}
+    {posts.map((post,index)=>(
+  post.node.isFeaturedOne ? <FeaturedOne post={post}/>: []
+        
+      ))}
+    
     </div>
   )
 }
@@ -34,3 +40,5 @@ export async function getStaticProps(){
     props: {posts}
   }
 }
+
+

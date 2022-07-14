@@ -23,6 +23,10 @@ export const getPosts = async()=>{
               tags{
                 name
               }
+              categories {
+                name
+                slug
+              }
               featuredImage {
                 url
               }

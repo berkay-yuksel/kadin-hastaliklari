@@ -1,0 +1,23 @@
+.featured_container{
+    display: flex;
+    justify-content:space-between;
+   align-items: center;
+    width: 100%;
+    height: 55vh;
+    background: url(https://ak.picdn.net/shutterstock/videos/1052684528/thumb/1.jpg);
+    padding: 10vw;
+    background-size: 75vw 55vh;
+    background-repeat: no-repeat;
+   
+}
+
+.featured_container_left{
+text-align: center;
+width: 40vw;
+}
+
+.featured_container_right img{
+    height: 45vh;
+}
+
+
