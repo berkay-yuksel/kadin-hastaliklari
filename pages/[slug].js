@@ -7,7 +7,7 @@ import React from "react";
 import Head from 'next/head'
 
 const PostPage = ({ post }) => {
-console.log(post)
+
 
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;

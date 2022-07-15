@@ -1,0 +1,13 @@
+/* .header_section_container{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 0 10vw;
+    border-bottom: 3px solid gray;
+} */
+.header_section_container{
+   text-align: center;
+   padding: 0.5em 0 1em 0; 
+
+    border-bottom: 3px solid gray;
+}

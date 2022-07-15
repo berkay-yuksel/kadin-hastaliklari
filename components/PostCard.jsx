@@ -17,7 +17,7 @@ const PostCard = ({post}) => {
 <div className={styles.post_card_top}><Moment  format="DD MMMM">{post.node.createdAt}</Moment><span>{post.node.author.name}</span></div>
 <h1>{post.node.title}</h1>
 <div className={styles.post_card_tags}>Etiketler:{post.node.tags.map((tag,index)=>(
-   <Link key={index} href={`${tag.slug}`}><span className={styles.post_card_tag}>{tag.name}</span></Link>
+   <Link key={index} href={`${tag.slug}`}><span key={index} className={styles.post_card_tag}>{tag.name}</span></Link>
   ))} </div>
 
 </div>

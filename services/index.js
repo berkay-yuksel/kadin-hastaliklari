@@ -4,11 +4,11 @@ import {request, gql} from "graphql-request"
 const graphqlAPI=process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 export const getPosts = async()=>{
-
+/**   last:3  eklersen 3 tane görür */
     const query=gql`
     query GetPosts {
         postsConnection(orderBy:createdAt_DESC
-          last:3 
+        
             ){
           edges {
             node{
@@ -92,6 +92,39 @@ export const getPostDetails = async(slug)=>{
 
 
 
+export const getSeries = async()=>{
+  /**   last:3  eklersen 3 tane görür */
+      const query=gql`
+      query GetSeries{
+        seriesConnection( where:{isFeaturedSerie:true}){
+          edges {
+            node {
+              author {
+                name
+              }
+              title
+              slug
+              isFeaturedSerie
+              episodes {
+                number
+                title
+                image {
+                  url
+                }
+              }
+            }
+          }
+        }
+        }
+        
+      `
+  
+  
+
+      const result= await request(graphqlAPI,query);
+  
+      return result.seriesConnection.edges;
+  }
 
 
 

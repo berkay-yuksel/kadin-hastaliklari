@@ -1,13 +1,16 @@
-import {useContext} from 'react'
-import Link from 'next/link'
 
+import Link from 'next/link'
+import styles from '../styles/Header.module.css'
 
 const Header = () => {
   return (
-    <>
-<Link href="/"><span>KADIN HASTALIKLARI</span></Link>
-<hr/>
-    </>
+    <div className={styles.header_section_container}>
+<Link href="/"><div>
+  <img src='./logo.png' height="75px"/>
+</div>
+</Link>
+
+    </div>
   )
 }
 

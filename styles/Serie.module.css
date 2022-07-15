@@ -1,0 +1,28 @@
+.serie_section {
+background-color: rgba(0, 0, 0, 0.848);
+    padding: 2em 10em 2em 10em;
+    color: white;
+    margin: 10em 0;
+}
+
+.serie_section h1{
+    padding-left:1em;
+    font-size: 5em;
+}
+
+.episode_container{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    
+}
+.episode_container_item{
+display: flex;
+justify-content: start;
+padding: 2em;
+width: 50%;
+}
+.episode_container_info{
+    padding-top: 0.75em;
+}
