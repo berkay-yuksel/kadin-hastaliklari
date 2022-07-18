@@ -5,3 +5,8 @@ export {default as Header} from "./Header";
 export {default as Layout} from "./Layout";
 export {default as FeaturedOne} from "./FeaturedOne"
 export {default as Serie} from "./Serie";
+export {default as FeaturedBanner} from "./FeaturedBanner";
+export {default as PostCards} from "./PostCards";
+export {default as EditorsPick} from "./EditorsPick";
+export {default as Footer} from "./Footer";
+export {default as CommercialArea} from "./CommercialArea";

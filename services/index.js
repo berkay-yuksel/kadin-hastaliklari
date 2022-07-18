@@ -8,13 +8,14 @@ export const getPosts = async()=>{
     const query=gql`
     query GetPosts {
         postsConnection(orderBy:createdAt_DESC
-        
+          where:{isFeaturedBanner:false isFeaturedOne:false}
             ){
           edges {
             node{
               author {
                 name
               }
+              isFeaturedBanner
               isFeaturedOne
               createdAt
               title
@@ -126,9 +127,149 @@ export const getSeries = async()=>{
       return result.seriesConnection.edges;
   }
 
+  
+
+export const getFeaturedBannerPost = async()=>{
+  /**   last:3  eklersen 3 tane görür */
+      const query=gql`
+
+        query getFeaturedBannerPost{
+          postsConnection(
+            where:{isFeaturedBanner:true}
+            ){
+          edges {
+            node{
+              author {
+                name
+              }
+              isFeaturedOne
+              isFeaturedBanner
+              createdAt
+              title
+              excerpt
+              slug
+              tags{
+                name
+              }
+              categories {
+                name
+                slug
+              }
+              featuredImage {
+                url
+              }
+            }
+          }
+        }
+      
+          
+          
+        }
+        
+      `
+  
+  
+
+      const result= await request(graphqlAPI,query);
+  
+      return result.postsConnection.edges;
+  }
 
 
 
+
+  export const getFeaturedOnePost = async()=>{
+    /**   last:3  eklersen 3 tane görür */
+        const query=gql`
+  
+          query getFeaturedOnePost{
+            postsConnection(
+              where:{isFeaturedOne:true}
+              ){
+            edges {
+              node{
+                author {
+                  name
+                }
+                isFeaturedOne
+                isFeaturedBanner
+                createdAt
+                title
+                excerpt
+                slug
+                tags{
+                  name
+                }
+                categories {
+                  name
+                  slug
+                }
+                featuredImage {
+                  url
+                }
+              }
+            }
+          }
+        
+            
+            
+          }
+          
+        `
+    
+    
+  
+        const result= await request(graphqlAPI,query);
+    
+        return result.postsConnection.edges;
+    }
+  
+
+
+
+
+    export const getEditorsPick = async()=>{
+      /**   last:3  eklersen 3 tane görür */
+          const query=gql`
+          query getEditorsPick {
+              postsConnection(orderBy:createdAt_DESC
+                where:{editorsPick:true }
+                  ){
+                edges {
+                  node{
+                    author {
+                      name
+                    }
+                    isFeaturedBanner
+                    isFeaturedOne
+                    createdAt
+                    title
+                    excerpt
+                    slug
+                    tags{
+                      name
+                    }
+                    categories {
+                      name
+                      slug
+                    }
+                    featuredImage {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+            
+          `
+      
+      
+      //burada categories de gereksiz olabilir gereksizse sil
+          const result= await request(graphqlAPI,query);
+      
+          return result.postsConnection.edges;
+      }
+      
 
 
 /* 

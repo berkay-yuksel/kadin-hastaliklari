@@ -1,11 +1,13 @@
 import styles from "../styles/Serie.module.css";
-
+import Link from "next/link"
 const Serie = ({ series }) => {
 
   
   return (
-    <div className={styles.serie_section}> 
-      <h1>{series[0].node.title}</h1>
+    <div className={styles.serie_section}>
+
+<h1><Link href={`/${series[0].node.slug}`}>{series[0].node.title}</Link> </h1>
+     
       <div className={styles.episode_container}>
         {series[0].node.episodes.map((episode, index) => (
           <div key={index} className={styles.episode_container_item}>

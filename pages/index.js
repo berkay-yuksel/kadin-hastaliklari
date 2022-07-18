@@ -1,11 +1,31 @@
 import Head from "next/head";
 import { useState } from "react";
-import { PostCard, FeaturedOne, Serie, Header } from "../components/";
-import { getPosts,getSeries } from "../services";
+import {
+  PostCards,
+  FeaturedOne,
+  Serie,
+  Header,
+  FeaturedBanner,
+  EditorsPick,
+  CommercialArea,
+  Footer,
+} from "../components/";
+import {
+  getPosts,
+  getSeries,
+  getFeaturedBannerPost,
+  getFeaturedOnePost,
+  getEditorsPick,
+} from "../services";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ posts ,series}) {
- 
+export default function Home({
+  posts,
+  series,
+  featuredBannerPost,
+  featuredOnePost,
+  editorPicks,
+}) {
   return (
     <div className={styles.home_container}>
       <Head>
@@ -15,27 +35,20 @@ export default function Home({ posts ,series}) {
       </Head>
 
       <Header />
-      <div className={styles.recent_posts_section_container}>
-        {posts.map((post, index) =>
-          post.node.isFeaturedOne ? (
-            []
-          ) : (
-            <div  key={index} className={styles.post_item}>
-              <PostCard post={post} key={index} />
-            </div>
-          )
-        )}
-      </div>
-<Serie series={series}/>
-     
-<div>
 
-{posts.map((post, index) =>
-  post.node.isFeaturedOne ? <FeaturedOne key={index} post={post} /> : []
-)}
-</div>
+      <FeaturedBanner featuredBannerPost={featuredBannerPost} />
 
+      <PostCards posts={posts} />
 
+      <Serie series={series} />
+
+      <FeaturedOne featuredOnePost={featuredOnePost} />
+
+      <CommercialArea />
+
+      <EditorsPick editorPicks={editorPicks} />
+
+      <Footer />
     </div>
   );
 }
@@ -44,10 +57,17 @@ export default function Home({ posts ,series}) {
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
   const series = (await getSeries()) || [];
+  const featuredBannerPost = (await getFeaturedBannerPost()) || [];
+  const featuredOnePost = (await getFeaturedOnePost()) || [];
+  const editorPicks = (await getEditorsPick()) || [];
+
   return {
-    props: { posts:posts,
-    series:series },
-   
+    props: {
+      posts: posts,
+      series: series,
+      featuredBannerPost: featuredBannerPost,
+      featuredOnePost: featuredOnePost,
+      editorPicks: editorPicks,
+    },
   };
 }
-

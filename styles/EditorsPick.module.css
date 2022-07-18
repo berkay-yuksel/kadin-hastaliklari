@@ -1,0 +1,51 @@
+.editors_pick_bigger_container h2{
+    font-size: 5em;
+    margin: 1em;
+    margin-left: 2em;
+
+}
+.editors_pick_bigger_container {
+    margin-bottom: 10vh;
+}
+
+.editors_pick_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 5.5em;
+
+}
+
+.editors_pick_card{
+    width: 300px;
+    height: 300px;
+    background-color: red;
+    padding: 1.5em;
+    
+}
+
+.editors_pick_card:hover{
+    opacity: 0.91;
+    cursor: pointer;
+}
+
+.editors_pick_card h5{
+    font-size: 1.4em;
+}
+
+.editors_pick_card p{
+    font-size: 1.3em;
+}
+
+.editors_pick_container div:first-child{
+    background: linear-gradient(to bottom right, #F2C14E, #F78154);
+}
+.editors_pick_container div:nth-child(2){
+    background: linear-gradient(to bottom right, #b9c6a7, #35ce60);
+}
+.editors_pick_container div:nth-child(3){
+    background: linear-gradient(to bottom right, #7DB7CC, #6E5FB3);
+}
+.editors_pick_container div:nth-child(4){
+    background: linear-gradient(to bottom right, #e97474, #bd4141);
+}
