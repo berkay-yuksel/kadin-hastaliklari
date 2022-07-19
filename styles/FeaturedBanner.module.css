@@ -1,5 +1,7 @@
 .featured_banner_bigger_section{
     padding: 0 6.6em;
+    
+    
 }
 .featured_banner_section{
   
@@ -16,16 +18,20 @@
  
 }
 .featured_banner_container{
+    
     position: relative;
     top:60%;
     left:105%;
     width: 20vw;
   font-size: 18px;
-  color: white;
-
-
+  color: white;  
   
-  
+}
+
+.featured_banner_container p:hover {
+cursor: pointer;
+text-decoration: underline;
+
 }
 
 .block{

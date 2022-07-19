@@ -5,6 +5,7 @@
 
 html,
 body {
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   font-family: Telegraf-Regular,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -26,3 +27,5 @@ b{
   color: #60c26b;
   font-weight: 400;
 }
+
+

@@ -1,13 +1,133 @@
-/* .header_section_container{
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    padding: 0 10vw;
-    border-bottom: 3px solid gray;
-} */
-.header_section_container{
-   text-align: center;
-   padding: 0.5em 0 1em 0; 
+.header_container{
+margin-bottom: 1em;
 
-    border-bottom: 3px solid gray;
+
+}
+.navBar {
+    position: -webkit-sticky !important; /* Safari */
+    position:sticky;
+    top: 0;
+
+    background-image: linear-gradient(rgba(212, 212, 212, 0.233),rgba(211, 211, 211, 0.024));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em 2em;
+  box-shadow: rgba(175, 174, 174, 0.161) 0px 8px 24px;
+}
+
+.showMenu {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  transform:translateX(0%); 
+  animation-name: opening;
+  animation-duration: 1s;
+
+  animation-direction: reverse;
+
+}
+
+.showMenu span {
+  color: green;
+  font-size: 2em;
+  padding: 1em;
+}
+
+.hideMenu {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: blue;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  
+    transform:translateX(100%); 
+    animation-name: closing;
+    animation-duration: 1s;
+  
+    animation-direction: reverse;
+
+  
+
+}
+
+.hideMenu span {
+    color: green;
+    font-size: 2em;
+    padding: 1em;
+  }
+  .defaultMenu{
+    font-size: 0;
+    height: 0;
+    display: none;
+  }
+
+@keyframes opening {
+    from {  transform:translateX(0%); }
+    to {   transform:translateX(100%);  }
+  }
+
+  
+@keyframes closing {
+    from {  transform:translateX(100%); }
+    to {   transform:translateX(0%);  }
+  }
+
+
+.navButtonOpened{
+  background-color: transparent;
+  border: none;
+  width: 205px;
+  text-align: end;
+}
+
+.navButtonOpened:hover{
+cursor:pointer;
+}
+
+.navButtonClosed{
+  transform: rotateY(180deg);
+
+padding: 1em;
+font-size:2em;
+}
+.navButtonClosed:hover{
+
+  cursor:pointer;
+}
+
+.navButtonClosed img:hover{
+  filter:invert();
+}
+
+  
+.navBar button{
+
+  color:black;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: white;
+  width: 205px;
+  height: 5vh;
+}
+
+.navBar button:hover{
+  background-color: rgba(216, 216, 216, 0.184);
+  cursor: pointer;
 }

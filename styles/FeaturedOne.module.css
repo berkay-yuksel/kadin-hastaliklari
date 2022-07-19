@@ -1,6 +1,7 @@
 .featured_section_container{
 background-color: rgba(250, 235, 215, 0.143);
 margin-bottom: 10vh;
+
 }
 .featured_container{
     display: flex;

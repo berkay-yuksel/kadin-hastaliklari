@@ -5,3 +5,16 @@
     background-color: #272727;
     color: white;
 }
+
+.commercial_area_container button{
+    color: white;
+    border: 1px solid gray;
+    background-color: #272727;
+    width: 15vw;
+    height: 5vh;
+}
+
+.commercial_area_container button:hover{
+    background-color: #3d3c3c;
+    cursor: pointer;
+}
