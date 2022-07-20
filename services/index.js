@@ -1,102 +1,137 @@
-import { graphql } from "graphql"
-import {request, gql} from "graphql-request"
+import { graphql } from "graphql";
+import { request, gql } from "graphql-request";
 
-const graphqlAPI=process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
+const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
-export const getPosts = async()=>{
-/**   last:3  eklersen 3 tane görür */
-    const query=gql`
+export const getPosts = async () => {
+  /**   last:3  eklersen 3 tane görür */
+  const query = gql`
     query GetPosts {
-        postsConnection(orderBy:createdAt_DESC
-          where:{isFeaturedBanner:false isFeaturedOne:false}
-            ){
-          edges {
-            node{
-              author {
-                name
-              }
-              isFeaturedBanner
-              isFeaturedOne
-              createdAt
-              title
-              excerpt
-              slug
-              tags{
-                name
-              }
-              categories {
-                name
-                slug
-              }
-              featuredImage {
-                url
-              }
-            }
-          }
-        }
-      }
-      
-    `
-
-
-//burada categories de gereksiz olabilir gereksizse sil
-    const result= await request(graphqlAPI,query);
-
-    return result.postsConnection.edges;
-}
-
-export const getPostDetails = async(slug)=>{
-
-  const query=gql`
-  query GetPostDetails($slug:String!) {
-      post(
-        where: {slug:$slug} 
-          ){
+      postsConnection(
+        orderBy: createdAt_DESC
+        where: { isFeaturedBanner: false, isFeaturedOne: false }
+      ) {
+        edges {
+          node {
             author {
               name
-              slug
-              photo{
-                url
-              }
             }
+            isFeaturedBanner
             isFeaturedOne
             createdAt
             title
             excerpt
             slug
-            tags{
+            tags {
+              name
+            }
+            categories {
               name
               slug
             }
             featuredImage {
               url
             }
-            categories {
-              name
-              slug
-            }
-            content{
-              raw
-            }
+          }
+        }
       }
     }
-    
-  `
+  `;
 
+  //burada categories de gereksiz olabilir gereksizse sil
+  const result = await request(graphqlAPI, query);
 
-//burada categories de gereksiz olabilir gereksizse sil
-  const result= await request(graphqlAPI,query,{slug});
+  return result.postsConnection.edges;
+};
+
+export const getPostDetails = async (slug) => {
+  const query = gql`
+    query GetPostDetails($slug: String!) {
+      post(where: { slug: $slug }) {
+        author {
+          name
+          slug
+          photo {
+            url
+          }
+        }
+        isFeaturedOne
+        createdAt
+        title
+        excerpt
+        slug
+        tags {
+          name
+          slug
+        }
+        featuredImage {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        content {
+          raw
+        }
+      }
+    }
+  `;
+
+  //burada categories de gereksiz olabilir gereksizse sil
+  const result = await request(graphqlAPI, query, { slug });
 
   return result.post;
-}
+};
 
+//get featured
 
+export const getFeaturedPostDetails = async (slug) => {
+  const query = gql`
+    query getFeaturedPostDetail($slug: String!) {
+      post(where: { slug: $slug }) {
+        author {
+          name
+          slug
+          photo {
+            url
+          }
+        }
+        isFeaturedOne
+        createdAt
+        title
+        excerpt
+        slug
+        tags {
+          name
+          slug
+        }
+        featuredImage {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        content {
+          raw
+        }
+      }
+    }
+  `;
 
+  //burada categories de gereksiz olabilir gereksizse sil
+  const result = await request(graphqlAPI, query, { slug });
 
-export const getSeries = async()=>{
+  return result.post;
+};
+
+//get featured
+
+export const getSeries = async () => {
   /**   last:3  eklersen 3 tane görür */
-      const query=gql`
-      query GetSeries{
+  const query = gql`
+      query GetSeries(){
         seriesConnection( where:{isFeaturedSerie:true}){
           edges {
             node {
@@ -118,159 +153,200 @@ export const getSeries = async()=>{
         }
         }
         
-      `
-  
-  
+      `;
 
-      const result= await request(graphqlAPI,query);
-  
-      return result.seriesConnection.edges;
-  }
+  const result = await request(graphqlAPI, query);
 
-  
+  return result.seriesConnection.edges;
+};
 
-export const getFeaturedBannerPost = async()=>{
+export const getSerieDetails = async (slug) => {
   /**   last:3  eklersen 3 tane görür */
-      const query=gql`
-
-        query getFeaturedBannerPost{
-          postsConnection(
-            where:{isFeaturedBanner:true}
-            ){
-          edges {
-            node{
-              author {
-                name
-              }
-              isFeaturedOne
-              isFeaturedBanner
-              createdAt
-              title
-              excerpt
-              slug
-              tags{
-                name
-              }
-              categories {
-                name
-                slug
-              }
-              featuredImage {
-                url
-              }
-            }
-          }
-        }
-      
-          
-          
-        }
-        
-      `
-  
-  
-
-      const result= await request(graphqlAPI,query);
-  
-      return result.postsConnection.edges;
-  }
-
-
-
-
-  export const getFeaturedOnePost = async()=>{
-    /**   last:3  eklersen 3 tane görür */
-        const query=gql`
-  
-          query getFeaturedOnePost{
-            postsConnection(
-              where:{isFeaturedOne:true}
-              ){
-            edges {
-              node{
-                author {
-                  name
-                }
-                isFeaturedOne
-                isFeaturedBanner
-                createdAt
-                title
-                excerpt
-                slug
-                tags{
-                  name
-                }
-                categories {
-                  name
-                  slug
-                }
-                featuredImage {
-                  url
-                }
-              }
-            }
-          }
-        
-            
-            
-          }
-          
-        `
-    
-    
-  
-        const result= await request(graphqlAPI,query);
-    
-        return result.postsConnection.edges;
-    }
-  
-
-
-
-
-    export const getEditorsPick = async()=>{
-      /**   last:3  eklersen 3 tane görür */
-          const query=gql`
-          query getEditorsPick {
-              postsConnection(orderBy:createdAt_DESC
-                where:{editorsPick:true }
-                  ){
-                edges {
-                  node{
-                    author {
-                      name
-                    }
-                    isFeaturedBanner
-                    isFeaturedOne
-                    createdAt
-                    title
-                    excerpt
-                    slug
-                    tags{
-                      name
-                    }
-                    categories {
-                      name
-                      slug
-                    }
-                    featuredImage {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-            
-          `
-      
-      
-      //burada categories de gereksiz olabilir gereksizse sil
-          const result= await request(graphqlAPI,query);
-      
-          return result.postsConnection.edges;
+  const query = gql`
+  query GetSerieDetail($slug: String!) {
+    serie(where: {slug: $slug}) {
+      author {
+        name
       }
-      
+      title
+      slug
+      isFeaturedSerie
+      featuredImage{
+        url
+      }
+      episodes {
+        number
+        title
+        image {
+          url
+        }
+        content {
+          html
+        }
+      }
+    }
+  }
+  
+  `;
 
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.serie;
+};
+
+export const getFeaturedBannerPost = async () => {
+  /**   last:3  eklersen 3 tane görür */
+  const query = gql`
+    query getFeaturedBannerPost {
+      postsConnection(where: { isFeaturedBanner: true }) {
+        edges {
+          node {
+            author {
+              name
+            }
+            isFeaturedOne
+            isFeaturedBanner
+            createdAt
+            title
+            excerpt
+            slug
+            tags {
+              name
+            }
+            categories {
+              name
+              slug
+            }
+            featuredImage {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.postsConnection.edges;
+};
+
+export const getFeaturedBannerPostDetails = async (slug) => {
+  const query = gql`
+    query getFeaturedBannerDetail($slug: String!) {
+      post(where: { slug: $slug }) {
+        author {
+          name
+          slug
+          photo {
+            url
+          }
+        }
+        isFeaturedOne
+        createdAt
+        title
+        excerpt
+        slug
+        tags {
+          name
+          slug
+        }
+        featuredImage {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        content {
+          raw
+        }
+      }
+    }
+  `;
+
+  //burada categories de gereksiz olabilir gereksizse sil
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.post;
+};
+
+//get featured
+
+export const getFeaturedOnePost = async () => {
+  /**   last:3  eklersen 3 tane görür */
+  const query = gql`
+    query getFeaturedOnePost {
+      postsConnection(where: { isFeaturedOne: true }) {
+        edges {
+          node {
+            author {
+              name
+            }
+            isFeaturedOne
+            isFeaturedBanner
+            createdAt
+            title
+            excerpt
+            slug
+            tags {
+              name
+            }
+            categories {
+              name
+              slug
+            }
+            featuredImage {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.postsConnection.edges;
+};
+
+export const getEditorsPick = async () => {
+  /**   isFeaturedOne:false isFeaturedBanner:false */
+  const query = gql`
+    query getEditorsPick {
+      postsConnection(orderBy: createdAt_DESC, where: { editorsPick: true }) {
+        edges {
+          node {
+            author {
+              name
+            }
+            isFeaturedBanner
+            isFeaturedOne
+            createdAt
+            title
+            excerpt
+            slug
+            tags {
+              name
+            }
+            categories {
+              name
+              slug
+            }
+            featuredImage {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  //burada categories de gereksiz olabilir gereksizse sil
+  const result = await request(graphqlAPI, query);
+
+  return result.postsConnection.edges;
+};
 
 /* 
  

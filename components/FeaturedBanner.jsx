@@ -17,7 +17,7 @@ const FeaturedBanner = ({ featuredBannerPost }) => {
         </div>
         <div className={styles.featured_banner_container}>
           <h1>{featuredBannerPost[0].node.excerpt}</h1>
-     <Link href={`/${featuredBannerPost[0].node.slug}`}><p>Devamını Oku</p></Link>
+     <Link href={`/kapak/${featuredBannerPost[0].node.slug}`}><p>Devamını Oku</p></Link>
         </div>
       </div>
     </div>

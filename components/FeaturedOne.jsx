@@ -18,7 +18,7 @@ const FeaturedOne = ({featuredOnePost}) => {
      <h3> {featuredOnePost[0].node.excerpt}  </h3>
  
      
-     <h5> <Link href={`${featuredOnePost[0].node.slug}`}> Devamını Oku </Link> </h5>
+     <h5> <Link href={`/ozel/${featuredOnePost[0].node.slug}`}> Devamını Oku </Link> </h5>
   </div>
   <div className={styles.featured_container_right}>
  <img  src={featuredOnePost[0].node.featuredImage.url} />
