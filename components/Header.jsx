@@ -31,7 +31,7 @@ const Header = () => {
       </div>
 
       <div className={styles.navBar}>
-        <div><button>ABONE OL</button></div>
+        <div className={styles.sub_button}><button>ABONE OL</button></div>
 
         <Link href="/">
           <div>

@@ -26,3 +26,15 @@ width: 40vw;
 }
 
 
+@media screen and (max-width: 900px) {
+    .featured_container{
+        background-size: 100vw 100%;
+        flex-direction: column-reverse;
+       
+    }
+    .featured_section_container{
+height: 100%;
+
+    }
+
+}

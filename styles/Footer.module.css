@@ -77,3 +77,41 @@ cursor: pointer;
 .footer_bottom_container div span:hover{
     cursor: pointer;
 }
+
+
+
+@media screen and (max-width: 900px) {
+
+    .footer_top_container{
+        flex-direction: column;
+
+    }
+.footer_top_container div{
+
+height: 100%;
+width: 100%;
+padding: 1em;
+}
+
+.footer_top_middle_container {
+    align-items: flex-start;
+}
+
+.footer_top_right_container {
+    align-items: flex-start;
+  
+
+}
+.footer_top_right_container  div {
+    padding: 0;
+}
+
+.footer_bottom_container{
+flex-direction: column;
+margin: 0;
+padding-bottom: 5em;
+text-align: center;
+}
+
+
+}

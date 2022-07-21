@@ -131,3 +131,14 @@ font-size:2em;
   background-color: rgba(216, 216, 216, 0.184);
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 900px) {
+  .navBar:first-child{
+    display: none;
+  }
+  .sub_button{
+    display: none;
+  }
+
+}

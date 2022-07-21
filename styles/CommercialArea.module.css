@@ -18,3 +18,18 @@
     background-color: #3d3c3c;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 900px) {
+
+    .commercial_area_container{
+        padding: 3em;
+        text-align: center;
+        margin: 20vh 0;
+        background-color: #272727;
+        color: white;
+    }
+    .commercial_area_container button{
+       width: 100%;
+    }
+}

@@ -19,3 +19,15 @@
     margin-left: 2em;
 }
 
+
+
+@media screen and (max-width: 900px) {
+
+    .recent_posts_section_bigger_container h2{
+        font-size: 5em;
+        margin:1em;
+        font-size: 3em;
+      
+    }
+
+}

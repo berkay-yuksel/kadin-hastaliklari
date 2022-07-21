@@ -49,3 +49,31 @@
 .editors_pick_container div:nth-child(4){
     background: linear-gradient(to bottom right, #e97474, #bd4141);
 }
+
+
+@media screen and (max-width: 900px) {
+
+    .editors_pick_bigger_container{
+        text-align: center;
+        margin-bottom: 15vh;
+      
+    }
+    .editors_pick_bigger_container h2{
+        font-size: 3em;
+        margin: 1em;
+    }
+
+    .editors_pick_container{
+        flex-direction: column;
+        padding: 0 2em;
+     
+    }
+    .editors_pick_card{
+        margin-bottom: 1em;
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    
+}
