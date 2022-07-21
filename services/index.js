@@ -160,6 +160,8 @@ export const getSeries = async () => {
   return result.seriesConnection.edges;
 };
 
+
+
 export const getSerieDetails = async (slug) => {
   /**   last:3  eklersen 3 tane görür */
   const query = gql`
@@ -347,6 +349,27 @@ export const getEditorsPick = async () => {
 
   return result.postsConnection.edges;
 };
+
+
+
+export const getCategories = async () => {
+
+  const query = gql`
+  query getCategories{
+    categories {
+      name
+    }
+  }
+  
+        
+      `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.categories;
+};
+
+
 
 /* 
  

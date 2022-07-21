@@ -4,12 +4,11 @@ const CommercialArea = () => {
   return (
     <div>
       <div className={styles.commercial_area_container}>
-        <h3>BECOME OUR MEMBER</h3>
+        <h3>ÜYE OLUN</h3>
         <h1>
-          Sign up for our membership and receive mails that includes tips and
-          tricks of healty life.
+        Üyeliğimize kaydolun ve sağlıklı yaşamın ipuçlarını ve püf noktalarını içeren mailler alın.
         </h1>
-        <button>Sign Up Now!</button>
+        <button>Şimdi kayıt ol!</button>
       </div>
     </div>
   );

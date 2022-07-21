@@ -1,12 +1,13 @@
 import styles from "../styles/Footer.module.css";
 
-const Footer = () => {
+const Footer = ({categories}) => {
+
   return (
     <div  className={styles.footer_section_container}>
       <div className={styles.footer_top_container}>
         <div>
           <img src="./logo.png" height="60px" />
-          <h3>The things that move us.</h3>
+          <h3>Serius est quam cogitas.</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -15,14 +16,13 @@ const Footer = () => {
           </p>
         </div>
         <div className={styles.footer_top_middle_container}>
-          <h5>MORE FROM IRON & AIR</h5>
+          <h5>POPÜLER KATEGORİLER</h5>
           <ul>
-            <li>Motorcycles</li>
-            <li>Automobiles</li>
-            <li>Travel & Adventure</li>
-            <li>Culture</li>
-            <li>Artifacts</li>
-            <li>Art & Design</li>
+
+            {
+              categories.map((category,i)=><li key={i}>{category.name} </li>)
+            }
+      
 
           </ul>
         </div>
@@ -40,7 +40,7 @@ const Footer = () => {
       </div>
 
      <div className={styles.footer_bottom_container}>
-     <div className={styles.footer_bottom_left}>© 2022 Iron & Air. Iron & Air Magazine / An Iron & Air Media company.</div>
+     <div className={styles.footer_bottom_left}>© 2022 Viya Labs Health / An Viya Labs Media company.</div>
       <div  className={styles.footer_bottom_right}>
         <span>TWITTER    </span>
         <span>FACEBOOK</span>

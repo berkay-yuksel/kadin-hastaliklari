@@ -16,6 +16,7 @@ import {
   getFeaturedBannerPost,
   getFeaturedOnePost,
   getEditorsPick,
+  getCategories
 } from "../services";
 import styles from "../styles/Home.module.css";
 
@@ -25,8 +26,10 @@ export default function Home({
   featuredBannerPost,
   featuredOnePost,
   editorPicks,
+  categories
 })
 {
+
 
 
   return (
@@ -37,7 +40,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header categories={categories} featuredOnePost={featuredOnePost}  />
 
       <FeaturedBanner featuredBannerPost={featuredBannerPost} />
 
@@ -51,7 +54,7 @@ export default function Home({
 
       <EditorsPick editorPicks={editorPicks} />
 
-      <Footer />
+      <Footer categories={categories} />
     </div>
   );
 }
@@ -63,6 +66,7 @@ export async function getStaticProps() {
   const featuredBannerPost = (await getFeaturedBannerPost()) || [];
   const featuredOnePost = (await getFeaturedOnePost()) || [];
   const editorPicks = (await getEditorsPick()) || [];
+  const categories=  (await getCategories()) || []; 
 
   return {
     props: {
@@ -71,6 +75,7 @@ export async function getStaticProps() {
       featuredBannerPost: featuredBannerPost,
       featuredOnePost: featuredOnePost,
       editorPicks: editorPicks,
+      categories:categories
     },
   };
 }
