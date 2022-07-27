@@ -1,13 +1,10 @@
-
-import {Header} from "./"
-
-const Layout = ({children}) => {
+import { Header } from "./";
+const Layout = ({ children }) => {
   return (
     <div>
-        {/* <Header/> */}
-    {children}
+      {/* <Header/> */}
+      {children}
     </div>
-  )
-}
-
-export default Layout
+  );
+};
+export default Layout;

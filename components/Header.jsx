@@ -9,7 +9,6 @@ const Header = ({ categories, featuredOne }) => {
     setNavbarOpen(!navbarOpen);
     setFirstClick(true);
   };
-
   return (
     <div className={styles.header_container}>
       <div>
@@ -27,13 +26,12 @@ const Header = ({ categories, featuredOne }) => {
               <h2>POPÜLER KATEGORİLER</h2>
               <ul>
                 {categories.map((item, index) => (
-                  <li>{item.name}</li>
+                  <li key={index} >{item.name}</li>
                 ))}
               </ul>
             </div>
 
-            <div className={styles.right_side} >
-              
+            <div className={styles.right_side}>
               <div>
                 <h2>Kadın Hastalıkları Hakkında</h2>
                 <p>
@@ -43,18 +41,13 @@ const Header = ({ categories, featuredOne }) => {
                   laboris nisi ut. pariatur
                 </p>
               </div>
-
               <div>
-              
                 <button>Üye ol</button>
-
                 <p className={styles.social}>
                   <span>TWITTER </span>
-                 
                   <span>FACEBOOK</span>
                 </p>
               </div>
-
             </div>
           </div>
           <div className={styles.navButtonClosed} onClick={handleToggle}>
@@ -62,12 +55,10 @@ const Header = ({ categories, featuredOne }) => {
           </div>
         </div>
       </div>
-
       <div className={styles.navBar}>
         <div className={styles.sub_button}>
           <button>ABONE OL</button>
         </div>
-
         <Link href="/">
           <div>
             <img src="./logo.png" height="60px" width="205px" />

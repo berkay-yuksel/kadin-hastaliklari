@@ -1,35 +1,33 @@
-.commercial_area_container{
-    padding: 7em;
-    text-align: center;
-    margin: 30vh 0;
-    background-color: #272727;
-    color: white;
+.commercial_area_container {
+  padding: 7em;
+  text-align: center;
+  margin: 30vh 0;
+  background-color: #272727;
+  color: white;
 }
 
-.commercial_area_container button{
-    color: white;
-    border: 1px solid gray;
-    background-color: #272727;
-    width: 15vw;
-    height: 5vh;
+.commercial_area_container button {
+  color: white;
+  border: 1px solid gray;
+  background-color: #272727;
+  width: 15vw;
+  height: 5vh;
 }
 
-.commercial_area_container button:hover{
-    background-color: #3d3c3c;
-    cursor: pointer;
+.commercial_area_container button:hover {
+  background-color: #3d3c3c;
+  cursor: pointer;
 }
-
 
 @media screen and (max-width: 900px) {
-
-    .commercial_area_container{
-        padding: 3em;
-        text-align: center;
-        margin: 20vh 0;
-        background-color: #272727;
-        color: white;
-    }
-    .commercial_area_container button{
-       width: 100%;
-    }
+  .commercial_area_container {
+    padding: 3em;
+    text-align: center;
+    margin: 20vh 0;
+    background-color: #272727;
+    color: white;
+  }
+  .commercial_area_container button {
+    width: 100%;
+  }
 }

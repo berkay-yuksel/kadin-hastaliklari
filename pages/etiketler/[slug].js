@@ -3,8 +3,7 @@ import React from 'react'
 const SearchTags = () => {
   return (
     <div>
-buraya taglananlar gelecek gelirse
-
+{/* comes with future updates */}
     </div>
   )
 }

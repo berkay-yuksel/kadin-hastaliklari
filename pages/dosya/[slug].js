@@ -8,9 +8,6 @@ import React from "react";
 import Head from "next/head";
 
 const PostPage = ({ post }) => {
-
-
-  
   return (
     <div className={styles.post_page_container}>
       <Head>
@@ -52,13 +49,7 @@ const PostPage = ({ post }) => {
           </Link>
         </span>
       </div>
-
-      <img
-        className={styles.banner_image}
-        src={
-        post.featuredImage.url}
-      />
-
+      <img className={styles.banner_image} src={post.featuredImage.url} />
       <div className={styles.post_info_container}>
         <div className={styles.post_info_top}>
           {post.title.length > 70 ? " " : <br />}
@@ -67,22 +58,13 @@ const PostPage = ({ post }) => {
           <h1 className={styles.post_header}>{post.title}</h1>
         </div>
       </div>
-    
-
       <div className={styles.post_content}>
-   
-
-
-
-
-    
-
-    {post.episodes.map((item,i)=>(
-      <div key={i}
-      dangerouslySetInnerHTML={{__html: `${item.content.html}`}}
-    />
-    ))}
-       
+        {post.episodes.map((item, i) => (
+          <div
+            key={i}
+            dangerouslySetInnerHTML={{ __html: `${item.content.html}` }}
+          />
+        ))}
       </div>
     </div>
   );
@@ -96,8 +78,6 @@ export async function getStaticProps({ params }) {
     props: { post: data },
   };
 }
-
-//önemli nextjs kısmı
 
 export async function getStaticPaths() {
   const posts = await getSeries();

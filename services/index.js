@@ -4,7 +4,7 @@ import { request, gql } from "graphql-request";
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 export const getPosts = async () => {
-  /**   last:3  eklersen 3 tane görür */
+  /* we can add last 3 for getting only latest 3 of them*/
   const query = gql`
     query GetPosts {
       postsConnection(
@@ -38,7 +38,6 @@ export const getPosts = async () => {
     }
   `;
 
-  //burada categories de gereksiz olabilir gereksizse sil
   const result = await request(graphqlAPI, query);
 
   return result.postsConnection.edges;
@@ -78,13 +77,10 @@ export const getPostDetails = async (slug) => {
     }
   `;
 
-  //burada categories de gereksiz olabilir gereksizse sil
   const result = await request(graphqlAPI, query, { slug });
 
   return result.post;
 };
-
-//get featured
 
 export const getFeaturedPostDetails = async (slug) => {
   const query = gql`
@@ -120,16 +116,12 @@ export const getFeaturedPostDetails = async (slug) => {
     }
   `;
 
-  //burada categories de gereksiz olabilir gereksizse sil
   const result = await request(graphqlAPI, query, { slug });
 
   return result.post;
 };
 
-//get featured
-
 export const getSeries = async () => {
-  /**   last:3  eklersen 3 tane görür */
   const query = gql`
       query GetSeries(){
         seriesConnection( where:{isFeaturedSerie:true}){
@@ -160,35 +152,31 @@ export const getSeries = async () => {
   return result.seriesConnection.edges;
 };
 
-
-
 export const getSerieDetails = async (slug) => {
-  /**   last:3  eklersen 3 tane görür */
   const query = gql`
-  query GetSerieDetail($slug: String!) {
-    serie(where: {slug: $slug}) {
-      author {
-        name
-      }
-      title
-      slug
-      isFeaturedSerie
-      featuredImage{
-        url
-      }
-      episodes {
-        number
+    query GetSerieDetail($slug: String!) {
+      serie(where: { slug: $slug }) {
+        author {
+          name
+        }
         title
-        image {
+        slug
+        isFeaturedSerie
+        featuredImage {
           url
         }
-        content {
-          html
+        episodes {
+          number
+          title
+          image {
+            url
+          }
+          content {
+            html
+          }
         }
       }
     }
-  }
-  
   `;
 
   const result = await request(graphqlAPI, query, { slug });
@@ -197,7 +185,6 @@ export const getSerieDetails = async (slug) => {
 };
 
 export const getFeaturedBannerPost = async () => {
-  /**   last:3  eklersen 3 tane görür */
   const query = gql`
     query getFeaturedBannerPost {
       postsConnection(where: { isFeaturedBanner: true }) {
@@ -267,13 +254,10 @@ export const getFeaturedBannerPostDetails = async (slug) => {
     }
   `;
 
-  //burada categories de gereksiz olabilir gereksizse sil
   const result = await request(graphqlAPI, query, { slug });
 
   return result.post;
 };
-
-//get featured
 
 export const getFeaturedOnePost = async () => {
   /**   last:3  eklersen 3 tane görür */
@@ -313,7 +297,6 @@ export const getFeaturedOnePost = async () => {
 };
 
 export const getEditorsPick = async () => {
-  /**   isFeaturedOne:false isFeaturedBanner:false */
   const query = gql`
     query getEditorsPick {
       postsConnection(orderBy: createdAt_DESC, where: { editorsPick: true }) {
@@ -344,60 +327,28 @@ export const getEditorsPick = async () => {
     }
   `;
 
-  //burada categories de gereksiz olabilir gereksizse sil
   const result = await request(graphqlAPI, query);
 
   return result.postsConnection.edges;
 };
 
-
-
 export const getCategories = async () => {
-
   const query = gql`
-  query getCategories{
-    categories {
-      name
+    query getCategories {
+      categories {
+        name
+      }
     }
-  }
-  
-        
-      `;
+  `;
 
   const result = await request(graphqlAPI, query);
 
   return result.categories;
 };
 
-
-
 /* 
- 
-//rECENT pOSTS
 
-export const getRecentPosts = async ()=>{
-  const query=gql=`
-  query GetPostDetails(){
-    posts(orderBy:createdAt_ASC
-    last:3
-      ){
-        title
-        featuredImage{
-          url
-        }
-       createdAt
-       slug
-
-      }
-  }
-  `
-  const result= await request(graphqlAPI,query);
-
-  return result.posts;
-}
-
-
-//getSimilar posts
+getSimilar posts
 
 const getSimilarPosts = async ()=>{
   const query=gql`

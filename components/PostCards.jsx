@@ -16,5 +16,3 @@ const PostCards = ({ posts }) => {
 };
 
 export default PostCards;
-
-export async function getStaticProps() {}
